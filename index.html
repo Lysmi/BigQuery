@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script>
+        function send() {
+                var startDate = document.date_form.start_date.value;
+                var endDate = document.date_form.end_date.value;
+                if (startDate!='' && endDate!=''){
+                    google.script.run.loadFromDB(startDate, endDate);
+                }
+                google.script.host.close()
+            }
+    </script>
+    <title>Календарь</title>
+</head>
+
+<body>
+    <form name="date_form">
+        <p>Выберите дату начала: <input type="date" name="start_date"></p>
+        <p>Выберите дату конца: <input type="date" name="end_date"></p>
+        <input type="submit" value="Загрузить" onclick="send()">
+    </form>
+</body>
+
+</html>
